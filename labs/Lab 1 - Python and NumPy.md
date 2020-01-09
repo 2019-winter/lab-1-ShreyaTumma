@@ -14,7 +14,7 @@ jupyter:
 ---
 
 # Name(s)
-**PUT YOUR FULL NAME(S) HERE**
+Shreya Tumma
 
 
 **Instructions:** This is an individual assignment, but you may discuss your code with your neighbors.
@@ -47,45 +47,79 @@ For the following exercises please read the Python appendix in the Marsland text
 
 ```python
 # YOUR SOLUTION HERE
-#a=1000
-print('this is my answer',a+1) 
+import numpy as np
+
+a = np.full((6,4), 2)
+a
 ```
 
 ## Exercise 2
 
 ```python
 # YOUR SOLUTION HERE
-a=2000
+import numpy as np
+
+b = np.ones((6,4))
+np.fill_diagonal(b,3)
+b
 ```
 
 ## Exercise 3
 
 ```python
 # YOUR SOLUTION HERE
+a*b
 ```
+
+Why does np.dot(a,b) not work, but the above solution does?
+- a * b does element by element multiplication
+- dot product does matrix multiplication, and that is not possible in this case because the two arrays do not have compatible dimensions.
+
+    
+
 
 ## Exercise 4
 
 ```python
 # YOUR SOLUTION HERE
+display(np.dot(a.transpose(),b))
+np.dot(a,b.transpose())
 ```
+
+Why are the results different shapes?
+- 
+
 
 ## Exercise 5
 
 ```python
 # YOUR SOLUTION HERE
+def pretty_print():
+    print('some output')
+
+pretty_print()
 ```
 
 ## Exercise 6
 
 ```python
 # YOUR SOLUTION HERE
+def array_fun():
+    
+    c = np.random.rand(5,5)
+    print(c)
+    print("array sum: ",np.sum(c))
+    print("array mean: ",np.mean(c))
+
+array_fun()
 ```
 
 ## Exercise 7
 
 ```python
 # YOUR SOLUTION HERE
+
+    
 ```
 
 ## Excercises 8-???
@@ -97,6 +131,10 @@ Repeat exercise A.1 from Marsland, but create a Pandas DataFrame instead of a Nu
 
 ```python
 # YOUR SOLUTION HERE
+import pandas as pd
+
+a = pd.DataFrame(np.ones((6,4)) * 2)
+a
 ```
 
 ## Exercise 9
@@ -138,6 +176,7 @@ How do you select the ``name`` column without using .iloc?
 
 ```python
 ## YOUR SOLUTION HERE
+titanic_df.name
 ```
 
 ## Exercise 13
@@ -146,6 +185,7 @@ After setting the index to ``sex``, how do you select all passengers that are ``
 ```python
 ## YOUR SOLUTION HERE
 titanic_df.set_index('sex',inplace=True)
+titanic_df.loc['female']
 ```
 
 ## Exercise 14
