@@ -190,17 +190,18 @@ Repeat exercise A.7 using a dataframe.
 def num_occurences_loops():
     f_count = 0
     #not sure how to solve this part
-    for i in b.iteritems():
-        if i == 1:
-            f_count+=1
-        
-        print(i)
+    for row in range(len(b)):
+        for item in b.loc[row]:
+            if item == 1:
+                f_count+=1
+    
     print('Number of ones using loops: ',f_count)
 
 def num_occurences_where():
     w_count = 0
-    w_count = np.where(b == 1)
-    count = len(w_count[0])
+    #w_count = np.where(arr.values == 1)
+    w_count = b.where(b.values == 1)
+    count = w_count.count().sum()
     print('Number of ones using .where(): ',count)
 
 num_occurences_loops()
