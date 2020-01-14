@@ -87,7 +87,8 @@ np.dot(a,b.transpose())
 ```
 
 Why are the results different shapes?
-- 
+- When transposing a rectangular matrix, the shape is changed because the rows become columns and the columns become rows.
+
 
 
 ## Exercise 5
@@ -110,6 +111,8 @@ def array_fun():
     print(c)
     print("array sum: ",np.sum(c))
     print("array mean: ",np.mean(c))
+    print("array min: ",np.min(c))
+    print("array max: ",np.max(c))
 
 array_fun()
 ```
@@ -119,7 +122,25 @@ array_fun()
 ```python
 # YOUR SOLUTION HERE
 
+def num_occurences_loops():
+    f_count = 0
     
+
+    for row in b:
+        for item in row:
+            if item == 1:
+                f_count +=1
+    print('Number of ones using loops: ',f_count)
+
+def num_occurences_where():
+    w_count = 0
+    w_count = np.where(b == 1)
+    count = len(w_count[0])
+    print('Number of ones using .where(): ',count)
+
+num_occurences_loops()
+num_occurences_where()
+
 ```
 
 ## Excercises 8-???
@@ -142,6 +163,10 @@ Repeat exercise A.2 using a DataFrame instead.
 
 ```python
 # YOUR SOLUTION HERE
+b = pd.DataFrame(np.ones((6,4)))
+np.fill_diagonal(b.values, 3)
+b
+
 ```
 
 ## Exercise 10
@@ -149,13 +174,38 @@ Repeat exercise A.3 using DataFrames instead.
 
 ```python
 # YOUR SOLUTION HERE
+a*b
 ```
+
+Why does np.dot(a,b) not work, but the above solution does?
+- a * b does element by element multiplication
+- dot product does matrix multiplication, and that is not possible in this case because the two arrays do not have compatible dimensions.
+
 
 ## Exercise 11
 Repeat exercise A.7 using a dataframe.
 
 ```python
 # YOUR SOLUTION HERE
+def num_occurences_loops():
+    f_count = 0
+    #not sure how to solve this part
+    for i in b.iteritems():
+        if i == 1:
+            f_count+=1
+        
+        print(i)
+    print('Number of ones using loops: ',f_count)
+
+def num_occurences_where():
+    w_count = 0
+    w_count = np.where(b == 1)
+    count = len(w_count[0])
+    print('Number of ones using .where(): ',count)
+
+num_occurences_loops()
+num_occurences_where()
+
 ```
 
 ## Exercises 12-14
@@ -193,6 +243,7 @@ How do you reset the index?
 
 ```python
 ## YOUR SOLUTION HERE
+titanic_df.reset_index()
 ```
 
 ```python
